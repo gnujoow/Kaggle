@@ -5,6 +5,10 @@
 	Titanic: machine learning from disaster
 	https://www.kaggle.com/c/titanic
 	https://www.dataquest.io/mission/74/getting-started-with-kaggle/
+
+	---------------------------------------------------------------
+	solved with linear regreesion
+	-> accuracy : 78%
 """
 import numpy as np
 import pandas as pd
@@ -12,11 +16,13 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn import cross_validation
 
+
+"""train cas"""
 # We can use the pandas library in python to read in the csv file.
 # This creates a pandas dataframe and assigns it to the titanic variable.
 titanic = pd.read_csv("train.csv")
 
-# The titanic variable is available here.
+# clean missing Age data with median value.
 titanic["Age"] = titanic["Age"].fillna(titanic["Age"].median())
 
 # Replace all the occurences of male with the number 0.
@@ -24,8 +30,7 @@ titanic.loc[titanic["Sex"] == "male", "Sex"] = 0
 titanic.loc[titanic["Sex"] == "female", "Sex"] = 1
 
 # Find all the unique values for "Embarked".
-print(titanic["Embarked"].unique())
-titanic["Embarked"] = titanic["Embarked"].fillna(0)
+titanic["Embarked"] = titanic["Embarked"].fillna(0) #clean NA data
 titanic.loc[titanic["Embarked"] == "S", "Embarked"] = 0
 titanic.loc[titanic["Embarked"] == "C", "Embarked"] = 1
 titanic.loc[titanic["Embarked"] == "Q", "Embarked"] = 2
@@ -39,6 +44,7 @@ alg = LogisticRegression(random_state=1)
 scores = cross_validation.cross_val_score(alg, titanic[predictors], titanic["Survived"], cv=3)
 
 
+"""test case"""
 titanic_test = pd.read_csv("test.csv")
 
 # The titanic variable is available here.
