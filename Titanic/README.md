@@ -108,6 +108,25 @@ Random forest 알고리즘을 수행하면서 overfitting이 발생할 수 있�
 descision tree를 구현하는 다른 방법중 하나는 ```gradient boosting tree```를 이용하는 것이다. 
 
 
+---
+
+## 정확성을 향상시키는 법(진행중)
+
+ - feature engineering
+	 - cabin과 관련된 특성을 이용한다.
+	 - 가족구성원의 크기 : 가족의 여성의 숫자가 가족 전체를 살릴 수 있을까
+	 - 승객의 이름으로 출신을 알 수 있을것이다. 이게 생존과 연관이 있을까? 
+	 
+  - 알고리즘
+    - random forest classfier
+    - support vector machine
+    - 다른 base classifier
+    
+  - ensembling methods
+    - majority voting
+    
+
+
 
 
 ---
